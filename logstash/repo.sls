@@ -18,8 +18,8 @@ logstash-repo-key:
 
 logstash-repo:
   pkgrepo.managed:
-    - humanname: logstash repository for 1.4.x packages
-    - baseurl: http://packages.elasticsearch.org/logstash/1.4/centos
+    - humanname: logstash repository for 1.5.x packages
+    - baseurl: http://packages.elasticsearch.org/logstash/1.5/centos
     - gpgcheck: 1
     - gpgkey: http://packages.elasticsearch.org/GPG-KEY-elasticsearch
     - enabled: 1
