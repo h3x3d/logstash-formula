@@ -1,7 +1,8 @@
 ---
 logstash:
+  version: 2.0
   inputs:
-    - 
+    -
       plugin_name: file
       path:
         - /var/log/syslog
@@ -23,7 +24,7 @@ logstash:
         message: '%{IPORHOST:clientip} %{USER:ident} %{USER:auth} \[%{HTTPDATE:timestamp}\] \"(?:%{WORD:verb} %{URIPATHPARAM:request}(?: HTTP/%{NUMBER:httpversion})?|-)\" %{NUMBER:response} (?:%{NUMBER:bytes}|-) \"(?:%{URI:referrer}|-)\" %{QS:agent}'
       add_field:
         received_at: '%{@timestamp}'
-        received_from: '%{host}'        
+        received_from: '%{host}'
     -
       plugin_name: date
       match:
