@@ -94,9 +94,6 @@ logstash_install_plugin_{{ plugin }}:
     - unless: test -n `/opt/elasticsearch/bin/plugin list | grep {{ plugin }}`
 {% endfor %}
 
-
-logstash-plugins:
-
 logstash-svc:
   service.running:
     - name: {{logstash.svc}}
