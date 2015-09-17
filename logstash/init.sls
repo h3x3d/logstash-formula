@@ -84,6 +84,19 @@ logstash-config-outputs:
     - name: /etc/logstash/conf.d/03-outputs.conf
 {%- endif %}
 
+
+{% for plugin in logstash.plugins | default([]) %}
+logstash_install_plugin_{{ plugin }}:
+  cmd.run:
+    - name: /opt/elasticsearch/bin/plugin install {{ plugin }}
+    - require:
+      - pkg: logstash-pkg
+    - unless: test -n `/opt/elasticsearch/bin/plugin list | grep {{ plugin }}`
+{% endfor %}
+
+
+logstash-plugins:
+
 logstash-svc:
   service.running:
     - name: {{logstash.svc}}
